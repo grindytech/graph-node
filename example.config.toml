@@ -1,0 +1,30 @@
+[store]
+[store.primary]
+connection = "postgresql://user_name:password@localhost:5432/graph-node"
+pool_size = 10
+
+[deployment]
+[[deployment.rule]]
+store = "primary"
+indexers = ["default"]
+
+[chains]
+ingestor = "default"
+
+[chains.nibiru-testnet-2]
+shard = "primary"
+provider = [
+  { label = "nibiru-testnet-2", url = "https://evm-rpc.archive.testnet-2.nibiru.fi/", features = [] }
+]
+
+[chains.tanssi-testnet]
+shard = "primary"
+provider = [
+  { label = "tanssi-testnet", url = "https://fraa-flashbox-2787-rpc.a.stagenet.tanssi.network", features = [] }
+]
+
+[chains.nibiru]
+shard = "primary"
+provider = [
+  { label = "nibiru", url = "https://evm-rpc.nibiru.fi", features = [] }
+]
